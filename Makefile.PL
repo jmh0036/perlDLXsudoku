@@ -11,14 +11,14 @@ WriteMakefile(
   PREREQ_PM        => {
     'strict'         => 1,
     'warnings'       => 1,
-    'Algorithm::DLX' => 0.03,
+    'Algorithm::DLX' => 0.02,
   },
   TEST_REQUIRES => {
-      Test::More => 1.302209,
+      Test::More => 1.302199,
   },
   test         => {TESTS => 't/*.t'},
   (eval { ExtUtils::MakeMaker->VERSION(7.70) } ? (META_MERGE => {
-      'meta-spec' => { version => 0.01 },
+      'meta-spec' => { version => 0.02 },
       resources => {
           repository => {
               type => 'git',

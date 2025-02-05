@@ -3,7 +3,7 @@ package Games::Sudoku::DLX;
 use strict;
 use warnings;
 
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 use Algorithm::DLX;
 
@@ -14,7 +14,7 @@ sub sudoku_to_dlx {
     my %params = @_;
     my $puzzle  = $params{puzzle};
     my $regions = $params{regions};
-    my $dlx = DLX->new();
+    my $dlx = Algorithm::DLX->new();
 
     my $order = @$puzzle;
     my $number_of_regions = @$regions;
@@ -147,7 +147,7 @@ Sudoku Puzzles (and generalizations of Sudoku)
         print "Solution $solution_count:\n";
         my $puzzle_solution = [];
         for my $cell (@$solution) {
-            my ($r, $c, $n) = $cell =~ /(\d)(\d)(\d)/;
+            my ($r, $c, $n) = $cell =~ /(\d) (\d) (\d)/;
             $puzzle_solution->[$r][$c] = $n;
         }
         for my $row (@$puzzle_solution) {
@@ -163,9 +163,13 @@ include Sudoku Pair Latin Squares as well as Factor Pair Latin Squares
 
 =head1 METHODS
 
+=cut
+
 =head2 solve_sudoku
 
 takes a puzzle and a list of regions and returns a list of solutions.
+
+=over
 
 =item puzzle
 
@@ -177,6 +181,8 @@ a number between 0 and the size of the puzzle.
 A reference to a list of regions. Each region is a reference to a 2-element
 array representing the dimensions of the region. The product of the
 dimensions of each region should be equal to the size of the puzzle.
+
+=back
 
 =head1 AUTHOR
 
